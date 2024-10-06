@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>3.Create a program on auto slide show 
+<body>
+    <div class="slider">
+        <div class="img-container">
+            <img src="sinchan1.jpeg" class="slider-img" />
+        </div>
+        <button class="btn" onclick="prev()">Prev</button>
+        <button class="btn" onclick="next()">Next</button>
+    </div>
+</body>
+<script>
+    const slider=document.querySelector('.slider-img')
+    const images=['sinchan1.jpeg','oggy.jpeg','doremon.jpeg','b.avif','nature.jpeg'];
+    let index=0;
+
+    function prev(){
+     if(index <= 0) {
+        index=images.length;
+     }
+     index--;
+     return setImage()
+    }
+    function next(){
+    if(index >= images.length-1) {
+    index = -1;
+    }
+    index++;
+    return setImage();
+    }
+
+    function setImage(){
+        return slider.setAttribute('src',images[index]);
+    }
+    function autoSlide() {
+        next();
+        setTimeout(autoSlide, 3000); 
+    }
+    autoSlide();
+</script>
+</html>
